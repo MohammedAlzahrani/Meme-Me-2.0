@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  Meme Me 2.0
 //
 //  Created by Mohammed ALZAHRANI on 11/28/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: - Outlets
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var topTextFiled: UITextField!
@@ -117,6 +117,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     func saveMeme() {
         let meme = Meme(topText: self.topTextFiled.text!, bottomText: self.bottomTextField.text!, originalImage: self.memeImageView.image!, memedImage: generateMemedImage())
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     // MARK: - Text configuration
     func configureTextFields(textField :UITextField, withText text: String){

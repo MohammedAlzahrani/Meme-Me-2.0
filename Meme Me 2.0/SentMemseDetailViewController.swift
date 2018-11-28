@@ -1,5 +1,5 @@
 //
-//  MemeDetailViewController.swift
+//  SentMemseDetailViewController.swift
 //  Meme Me 2.0
 //
 //  Created by Mohammed ALZAHRANI on 11/28/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeDetailViewController: UIViewController {
+class SentMemseDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
