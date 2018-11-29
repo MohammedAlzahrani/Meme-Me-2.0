@@ -9,11 +9,12 @@
 import UIKit
 
 class SentMemseDetailViewController: UIViewController {
-
+    var meme: Meme!
+    @IBOutlet weak var memedImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.memedImageView.image = meme.memedImage
     }
 
 }
