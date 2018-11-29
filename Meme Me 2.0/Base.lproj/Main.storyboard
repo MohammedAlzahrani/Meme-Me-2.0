@@ -52,20 +52,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrs-cD-zAD">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l2q-hB-hkU">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rY5-Is-8lv" customClass="SentMemesCollectionViewCell" customModule="Meme_Me_2_0" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="rY5-Is-8lv" customClass="SentMemesCollectionViewCell" customModule="Meme_Me_2_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWM-uM-uTR">
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="92"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="memedImage" destination="aWM-uM-uTR" id="WG3-zm-tS5"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -73,11 +82,20 @@
                             <outlet property="delegate" destination="gQl-Ii-uCV" id="4WS-BH-Fij"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="BsQ-KZ-v9o"/>
+                    <navigationItem key="navigationItem" id="BsQ-KZ-v9o">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aNG-uR-DCR">
+                            <connections>
+                                <action selector="newMeme:" destination="gQl-Ii-uCV" id="Q75-L0-0zs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memesCollectionView" destination="tWn-Xb-Wkq" id="fH2-EF-Rs9"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ez4-YK-RkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306" y="843"/>
+            <point key="canvasLocation" x="-306.39999999999998" y="842.42878560719646"/>
         </scene>
         <!--Item-->
         <scene sceneID="gM3-oJ-1zh">
@@ -136,9 +154,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="L0L-cb-9lt">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="FXU-rG-W8P">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FXU-rG-W8P">
                             <connections>
-                                <segue destination="55B-l1-KMW" kind="show" id="AUV-Ny-07h"/>
+                                <action selector="newMeme:" destination="a0t-zo-75L" id="FNe-gl-WXR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,13 +171,13 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="98q-K1-xbn">
             <objects>
-                <viewController id="55B-l1-KMW" customClass="MemeEditorViewController" customModule="Meme_Me_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorVC" id="55B-l1-KMW" customClass="MemeEditorViewController" customModule="Meme_Me_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SwE-6N-Iof">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5H-j0-ngP" userLabel="BottomToolbar">
-                                <rect key="frame" x="0.0" y="583" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="632" width="375" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VKn-tb-EnP"/>
                                 </constraints>
@@ -177,7 +195,7 @@
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8B-KT-4BS" userLabel="TopToolbar">
-                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="7Pc-NW-56Z"/>
                                 </constraints>
@@ -187,19 +205,24 @@
                                             <action selector="shareMemedImage:" destination="55B-l1-KMW" id="fUt-v5-ngh"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="cancel" id="8z9-Td-cOP">
+                                        <connections>
+                                            <action selector="cancel:" destination="55B-l1-KMW" id="e1Q-1r-Vb1"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="biy-0T-nDF">
-                                <rect key="frame" x="5" y="113" width="365" height="464"/>
+                                <rect key="frame" x="5" y="69" width="365" height="557"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DMO-K3-G9X">
-                                <rect key="frame" x="10" y="117" width="355" height="17"/>
+                                <rect key="frame" x="10" y="73" width="355" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VyP-lI-jk9">
-                                <rect key="frame" x="10" y="548" width="355" height="17"/>
+                                <rect key="frame" x="10" y="597" width="355" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -238,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASX-Ux-nFj" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="148"/>
+            <point key="canvasLocation" x="538" y="161"/>
         </scene>
     </scenes>
 </document>

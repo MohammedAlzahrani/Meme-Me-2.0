@@ -54,9 +54,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         controller.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed == true {
                 self.saveMeme()
+                self.dismiss(animated: true, completion: nil)
             }
         }
         present(controller, animated: true, completion: nil)
+    }
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // image is picked

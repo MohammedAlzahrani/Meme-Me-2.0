@@ -23,8 +23,14 @@ class SentMemesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.title = "Sent Mems"
     }
-
+    @IBAction func newMeme(_ sender: Any) {
+        let memeEditorVC: MemeEditorViewController
+        memeEditorVC = storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorViewController
+        present(memeEditorVC, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.memesTableView.reloadData()
     }
