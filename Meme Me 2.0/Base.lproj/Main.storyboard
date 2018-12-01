@@ -51,7 +51,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tWn-Xb-Wkq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l2q-hB-hkU">
                             <size key="itemSize" width="140" height="106"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -95,6 +95,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="flowLayout" destination="l2q-hB-hkU" id="yHm-nD-VKH"/>
                         <outlet property="memesCollectionView" destination="tWn-Xb-Wkq" id="fH2-EF-Rs9"/>
                     </connections>
                 </collectionViewController>

@@ -12,6 +12,7 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController {
     @IBOutlet var memesCollectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -25,6 +26,13 @@ class SentMemesCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
+        let space:CGFloat = 4.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        let itemHight = (view.frame.size.height - 150.0) / 3.0
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: itemHight)
+        //UIDevice.current.orientation.isLandscape
         self.navigationItem.title = "Sent Mems"
         // Do any additional setup after loading the view.
     }
@@ -78,7 +86,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
         detailVC.meme = meme
         navigationController?.pushViewController(detailVC, animated: true)
     }
-
+//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        if UIDevice.current.orientation.isLandscape {
+//            self.flowLayou
+//            print("landscape")
+//        } else {
+//            print("portrait")
+//        }
+//    }
     // MARK: UICollectionViewDelegate
 
     /*
