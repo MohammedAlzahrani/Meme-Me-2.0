@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    // Delete a meme
+    func deleteMeme(index: Int){
+        memes.remove(at: index)
+    }
 
 }
 
