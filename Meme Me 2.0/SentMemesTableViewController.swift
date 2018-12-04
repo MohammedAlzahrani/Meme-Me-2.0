@@ -9,6 +9,7 @@
 import UIKit
 
 class SentMemesTableViewController: UITableViewController {
+    // MARK: - outlets
     @IBOutlet var memesTableView: UITableView!
     var memes: [Meme]!{
         let object = UIApplication.shared.delegate
@@ -19,6 +20,7 @@ class SentMemesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Sent Mems"
     }
+    // new meme
     @IBAction func newMeme(_ sender: Any) {
         let memeEditorVC: MemeEditorViewController
         memeEditorVC = storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorViewController
@@ -29,7 +31,7 @@ class SentMemesTableViewController: UITableViewController {
         self.memesTableView.reloadData()
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view delegates
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -43,7 +45,7 @@ class SentMemesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
         let meme = memes[indexPath.row]
-        // Configure the cell...
+        // Configure the cell
         cell.textLabel?.text = meme.topText
         cell.detailTextLabel?.text = meme.bottomText
         cell.imageView?.image = meme.memedImage
@@ -57,6 +59,7 @@ class SentMemesTableViewController: UITableViewController {
         detailVC.memeIndex = indexPath.row
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    // delete a meme
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -31,9 +31,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if self.memeImageView.image == nil {
             self.shareButton.isEnabled = false
         }
-        // Text specifications
-//        configureTextFields(textField: topTextFiled, withText: "TOP")
-//        configureTextFields(textField: bottomTextField, withText: "BOTTOM")
     }
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -43,11 +40,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             configureTextFields(textField: bottomTextField, withText: "BOTTOM")
         }
         else {
+            // when the meme editor VC is presented by the details VC
             configureTextFields(textField: topTextFiled, withText: self.meme.topText)
             configureTextFields(textField: bottomTextField, withText: self.meme.bottomText)
             self.memeImageView.image = self.meme.originalImage
             self.shareButton.isEnabled = true
-            //print("hhhhhhhhhhhhhhhhh \(memeIndex!)")
         }
     }
     
@@ -142,6 +139,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
           appDelegate.memes.append(meme)
         }
         else {
+            // save the edited meme
             appDelegate.memes[index!] = meme
         }
     }

@@ -9,17 +9,20 @@
 import UIKit
 
 class SentMemseDetailViewController: UIViewController {
+    // MARK: - outlets
     var meme: Meme!
     var memeIndex: Int!
     @IBOutlet weak var memedImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.memedImageView.image = meme.memedImage
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.memedImageView.image = meme.memedImage
     }
+    
+    // Edit a meme
     @IBAction func editMeme(_ sender: Any) {
         let memeEditorVC: MemeEditorViewController
         memeEditorVC = storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorViewController
