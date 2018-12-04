@@ -31,8 +31,9 @@
         <scene sceneID="Tij-ZU-KPt">
             <objects>
                 <navigationController id="NJd-D2-vQB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="kfJ-v0-phf"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="kfJ-v0-phf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T5b-Jd-oKB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -145,8 +146,9 @@
         <scene sceneID="gM3-oJ-1zh">
             <objects>
                 <navigationController id="phN-9W-sLC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="nej-39-Mq2"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table" id="nej-39-Mq2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zEL-1J-81k">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -307,4 +309,8 @@
             <point key="canvasLocation" x="538" y="161"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
 </document>
