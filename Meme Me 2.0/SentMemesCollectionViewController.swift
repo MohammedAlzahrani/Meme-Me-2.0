@@ -84,6 +84,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "MemseDetailViewController") as! SentMemseDetailViewController
         let meme = memes[indexPath.row]
         detailVC.meme = meme
+        detailVC.memeIndex = indexPath.row
         navigationController?.pushViewController(detailVC, animated: true)
     }
 //    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

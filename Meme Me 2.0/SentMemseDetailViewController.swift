@@ -25,11 +25,8 @@ class SentMemseDetailViewController: UIViewController {
         memeEditorVC = storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorViewController
         memeEditorVC.meme = self.meme
         memeEditorVC.memeIndex = self.memeIndex
-        present(memeEditorVC, animated: true, completion: nil /*{
-            memeEditorVC.topTextFiled?.text = self.meme.topText
-            memeEditorVC.bottomTextField?.text = self.meme.bottomText
-            memeEditorVC.memeImageView?.image = self.meme.originalImage
-        }*/)
+        present(memeEditorVC, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

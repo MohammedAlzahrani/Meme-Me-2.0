@@ -47,7 +47,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             configureTextFields(textField: bottomTextField, withText: self.meme.bottomText)
             self.memeImageView.image = self.meme.originalImage
             self.shareButton.isEnabled = true
-            print("hhhhhhhhhhhhhhhhh \(memeIndex!)")
+            //print("hhhhhhhhhhhhhhhhh \(memeIndex!)")
         }
     }
     
