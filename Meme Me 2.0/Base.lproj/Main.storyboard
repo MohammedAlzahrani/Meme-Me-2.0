@@ -115,10 +115,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Li-h8-eu6">
                                 <rect key="frame" x="5" y="69" width="365" height="529"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFO-ag-LWR">
+                                <rect key="frame" x="172" y="617" width="30" height="30"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editMeme:" destination="bxK-eC-0Pj" eventType="touchUpInside" id="X08-ME-R3p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sFO-ag-LWR" firstAttribute="centerX" secondItem="QrJ-Zd-RbX" secondAttribute="centerX" id="GjV-1E-fGt"/>
                             <constraint firstItem="8Li-h8-eu6" firstAttribute="centerY" secondItem="1or-Kj-TDK" secondAttribute="centerY" id="Ys3-7V-mcT"/>
+                            <constraint firstItem="sFO-ag-LWR" firstAttribute="top" secondItem="8Li-h8-eu6" secondAttribute="bottom" constant="19" id="bcX-64-1oN"/>
                             <constraint firstItem="8Li-h8-eu6" firstAttribute="top" secondItem="QrJ-Zd-RbX" secondAttribute="top" constant="49" id="vb2-ad-cuD"/>
                             <constraint firstItem="8Li-h8-eu6" firstAttribute="leading" secondItem="QrJ-Zd-RbX" secondAttribute="leading" constant="5" id="xf2-ly-3Kp"/>
                             <constraint firstItem="8Li-h8-eu6" firstAttribute="centerX" secondItem="1or-Kj-TDK" secondAttribute="centerX" id="yQ2-Ps-W7z"/>

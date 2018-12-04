@@ -17,6 +17,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    var meme: Meme!
+    var memeIndex: Int?
     let textDelegate = TextFieldDelegate()
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
@@ -26,14 +28,27 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shareButton.isEnabled = false
+        if self.memeImageView.image == nil {
+            self.shareButton.isEnabled = false
+        }
         // Text specifications
-        configureTextFields(textField: topTextFiled, withText: "TOP")
-        configureTextFields(textField: bottomTextField, withText: "BOTTOM")
+//        configureTextFields(textField: topTextFiled, withText: "TOP")
+//        configureTextFields(textField: bottomTextField, withText: "BOTTOM")
     }
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
+        if self.meme == nil {
+            configureTextFields(textField: topTextFiled, withText: "TOP")
+            configureTextFields(textField: bottomTextField, withText: "BOTTOM")
+        }
+        else {
+            configureTextFields(textField: topTextFiled, withText: self.meme.topText)
+            configureTextFields(textField: bottomTextField, withText: self.meme.bottomText)
+            self.memeImageView.image = self.meme.originalImage
+            self.shareButton.isEnabled = true
+            print("hhhhhhhhhhhhhhhhh \(memeIndex!)")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,7 +68,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         /*The code for completionWithItemsHandler is taken from https://stackoverflow.com/questions/39968210/swift-share-with-function-on-completion */
         controller.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed == true {
-                self.saveMeme()
+                self.saveMeme(index: self.memeIndex)
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -119,11 +134,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         configureToolbars(false)
         return memedImage
     }
-    func saveMeme() {
+    func saveMeme(index:Int?) {
         let meme = Meme(topText: self.topTextFiled.text!, bottomText: self.bottomTextField.text!, originalImage: self.memeImageView.image!, memedImage: generateMemedImage())
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        if index == nil {
+          appDelegate.memes.append(meme)
+        }
+        else {
+            appDelegate.memes[index!] = meme
+        }
     }
     // MARK: - Text configuration
     func configureTextFields(textField :UITextField, withText text: String){
